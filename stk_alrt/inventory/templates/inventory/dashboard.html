@@ -1,0 +1,33 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+</head>
+<body class="bg-gray-100 p-4">
+    <div class="max-w-3xl mx-auto bg-white shadow p-6 rounded">
+        <h2 class="text-2xl font-bold mb-4">Stock Forecast for {{ product }}</h2>
+        <canvas id="stockChart"></canvas>
+    </div>
+
+    <script>
+        const labels = {{ labels|safe }};
+        const data = {{ data|safe }};
+
+        new Chart(document.getElementById("stockChart"), {
+            type: 'line',
+            data: {
+                labels: labels,
+                datasets: [{
+                    label: 'Forecasted Quantity',
+                    backgroundColor: 'rgba(75, 192, 192, 0.2)',
+                    borderColor: 'rgb(75, 192, 192)',
+                    data: data,
+                    fill: true,
+                }]
+            }
+        });
+    </script>
+</body>
+</html>
