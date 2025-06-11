@@ -11,6 +11,7 @@ pandas = "*"
 xlrd = "*"
 openpyxl = "*"
 matplotlib = "*"
+djangorestframework = "*"
 
 [dev-packages]
 ipykernel = "*"
